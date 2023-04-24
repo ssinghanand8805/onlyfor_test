@@ -21,7 +21,7 @@ class WriteSomethingWidget extends StatelessWidget {
 
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  height: 70.0,
+                  height: 75.0,
                   width: MediaQuery.of(context).size.width/1.4,
                   decoration: BoxDecoration(
                     border: Border.all(
