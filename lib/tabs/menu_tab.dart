@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../view/dashboard/view/dashboard_view.dart';
+
 class MenuTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class MenuTab extends StatelessWidget {
                 ),
               ],
             ),
-
+SizedBox(height: 15,),
             // Padding(
             //   padding: const EdgeInsets.symmetric(horizontal: 15.0),
             //   child: Divider(height: 20.0),
@@ -224,9 +226,38 @@ class MenuTab extends StatelessWidget {
             //   ),
             // ),
             //
+            InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => DashBoardView(),
+                    ),
+                  );
+                },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 50.0,
+                padding: EdgeInsets.symmetric(horizontal: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Icon(Icons.desktop_mac, size: 30.0, color: Colors.grey[700]),
+                        SizedBox(width: 10.0),
+                        Text('Desktop', style: TextStyle(fontSize: 17.0)),
+                      ],
+                    ),
+                   // Icon(Icons.arrow_drop_down, size: 30.0),
+                  ],
+                ),
+              ),
+            ),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 65.0,
+              height: 50.0,
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,7 +265,7 @@ class MenuTab extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Icon(Icons.help, size: 40.0, color: Colors.grey[700]),
+                      Icon(Icons.help, size: 30.0, color: Colors.grey[700]),
                       SizedBox(width: 10.0),
                       Text('Help & Support', style: TextStyle(fontSize: 17.0)),
                     ],
@@ -248,7 +279,7 @@ class MenuTab extends StatelessWidget {
 
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 65.0,
+              height: 50.0,
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,7 +287,7 @@ class MenuTab extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Icon(Icons.settings, size: 40.0, color: Colors.grey[700]),
+                      Icon(Icons.settings, size: 30.0, color: Colors.grey[700]),
                       SizedBox(width: 10.0),
                       Text('Settings & Privacy', style: TextStyle(fontSize: 17.0)),
                     ],
@@ -268,7 +299,7 @@ class MenuTab extends StatelessWidget {
 
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 65.0,
+              height: 50.0,
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -276,7 +307,7 @@ class MenuTab extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Icon(Icons.exit_to_app, size: 40.0, color: Colors.grey[700]),
+                      Icon(Icons.exit_to_app, size: 30.0, color: Colors.grey[700]),
                       SizedBox(width: 10.0),
                       Text('Logout', style: TextStyle(fontSize: 17.0)),
                     ],

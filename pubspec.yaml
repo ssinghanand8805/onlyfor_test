@@ -34,6 +34,7 @@ dependencies:
   material_design_icons_flutter:
   intl: ^0.18.1
   flutter_native_splash: ^2.2.19
+  syncfusion_flutter_charts:
 
 dev_dependencies:
   flutter_test:

@@ -184,17 +184,19 @@ class _PostStats extends StatelessWidget {
                Spacer(),
                InkWell(
                  onTap:  () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=> CommentBox(
-                    image: Image.network(post.imageUrl),
-                   )));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=> CommentSection()));
                  },
-                 child: Icon(
+                 child: Container(
+                   child: Row(children: [
+                   Icon(
                      MdiIcons.commentOutline,
                      color: Colors.grey[600],
                      size: 20.0,
                    ),
-               ),
-              Text(" Comment")
+                   Text(" Comment")
+                 ]),),
+               )
+
               // _PostButton(
               //   icon: Icon(
               //     MdiIcons.commentOutline,

@@ -9,7 +9,7 @@ class ProfileTab extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 360.0,
+            height:  MediaQuery.of(context).size.height*0.35,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -30,28 +30,27 @@ class ProfileTab extends StatelessWidget {
                     ),
                     SizedBox(height: 20.0),
                     Text('Mike Tyler', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Container(
-                          height: 40.0,
-                          width: MediaQuery.of(context).size.width - 80,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(5.0)
-                          ),
-                          child: Center(child: Text('Add to Story', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16.0))),
-                        ),
-                        Container(
-                          height: 40.0,
-                          width: 45.0,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(5.0)
-                          ),
-                          child: Icon(Icons.more_horiz),
-                        )
+                        // Container(
+                        //   height: 40.0,
+                        //   width: MediaQuery.of(context).size.width - 80,
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.blue,
+                        //     borderRadius: BorderRadius.circular(5.0)
+                        //   ),
+                        //   child: Center(child: Text('Add to Story', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16.0))),
+                        // ),
+                        // Container(
+                        //   height: 40.0,
+                        //   width: 45.0,
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.grey[300],
+                        //     borderRadius: BorderRadius.circular(5.0)
+                        //   ),
+                        //   child: Icon(Icons.more_horiz),
+                        // )
                       ],
                     )
                   ],
