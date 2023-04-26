@@ -1,86 +1,80 @@
 import 'package:flutter/material.dart';
 
-class CommentBox extends StatefulWidget {
-  final Widget image;
-  final TextEditingController controller;
-  final BorderRadius inputRadius;
-  final Function onSend,onImageRemoved;
-
-  const CommentBox({Key key, this.image, this.controller, this.inputRadius, this.onSend , this.onImageRemoved }) : super(key: key);
-
+class CommentSection extends StatefulWidget {
   @override
-  _CommentBoxState createState() => _CommentBoxState();
+  _CommentSectionState createState() => _CommentSectionState();
 }
 
-class _CommentBoxState extends State<CommentBox> {
-  Widget image;
+class _CommentSectionState extends State<CommentSection> {
+  TextEditingController _commentController = TextEditingController();
 
-  @override
-  void initState() {
-    image = widget.image;
-    super.initState();
-  }
+  List<String> _comments = [    'Nice post!',    'I love this!',    'Thanks for sharing!' , 'Nice post!',    'I love this!',    'Thanks for sharing!' ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Divider(
-            height: 1,
-            color: Colors.grey[300],
-            thickness: 1,
-          ),
-          const SizedBox(height: 20),
-          if (image != null)
-            _removable(
-              context,
-              _imageView(context),
-            ),
-          if(widget.controller!=null) TextFormField(
-            controller: widget.controller,
-            decoration: InputDecoration(
-              suffixIcon: IconButton(
-                icon: Icon(Icons.send,color: Theme.of(context).primaryColor,),
-                onPressed: widget.onSend,
+      appBar: AppBar(title: Text("Comments"),),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            // List of comments
+            Expanded(
+              child: ListView.builder(
+                itemCount: _comments.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage('assets/jeremy.jpg'),
+                        ),
+                        SizedBox(width: 16.0),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Anand Singh',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(_comments[index]),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
-              filled: true,
-              border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: widget.inputRadius ?? BorderRadius.circular(32),
+            ),
+            // Comment input field
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: _commentController,
+                      decoration: InputDecoration(hintText: 'Add a comment...'),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.send),
+                    onPressed: () {
+                      setState(() {
+                        _comments.add(_commentController.text);
+                        _commentController.clear();
+                      });
+                    },
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _removable(BuildContext context, Widget child) {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        child,
-        IconButton(
-          icon: Icon(Icons.clear),
-          onPressed: () {
-            setState(() {
-              image = null;
-              widget.onImageRemoved();
-            });
-          },
-        )
-      ],
-    );
-  }
-
-  Widget _imageView(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: image,
+          ],
+        ),
       ),
     );
   }

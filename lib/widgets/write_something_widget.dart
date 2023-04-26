@@ -19,20 +19,22 @@ class WriteSomethingWidget extends StatelessWidget {
 
                 SizedBox(width: 7.0),
 
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  height: 75.0,
-                  width: MediaQuery.of(context).size.width/1.4,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1.0,
-                      color: Colors.grey[400]
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    height: 75.0,
+                    width: MediaQuery.of(context).size.width/1.4,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1.0,
+                        color: Colors.grey[400]
+                      ),
                     ),
+                    child: TextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: 'What\'s on your mind?'),
+                    )
                   ),
-                  child: TextField(
-                    decoration: InputDecoration.collapsed(
-                        hintText: 'What\'s on your mind?'),
-                  )
                 )
               ],
             ),
