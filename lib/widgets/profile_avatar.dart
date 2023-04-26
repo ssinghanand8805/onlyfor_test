@@ -5,12 +5,12 @@ import '../utils/colors.dart';
 
 
 class ProfileAvatar extends StatelessWidget {
-  final String imageUrl;
+  final String?imageUrl;
   final bool isActive;
   final bool hasBorder;
 
   const ProfileAvatar({
-    Key key,
+    Key?key,
      this.imageUrl,
     this.isActive = false,
     this.hasBorder = false,
@@ -26,7 +26,7 @@ class ProfileAvatar extends StatelessWidget {
           child: CircleAvatar(
             radius: hasBorder ? 17.0 : 20.0,
             backgroundColor: Colors.grey[200],
-            backgroundImage: CachedNetworkImageProvider(imageUrl),
+            backgroundImage: CachedNetworkImageProvider(imageUrl.toString()),
           ),
         ),
         isActive

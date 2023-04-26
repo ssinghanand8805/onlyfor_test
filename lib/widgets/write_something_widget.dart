@@ -27,7 +27,7 @@ class WriteSomethingWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1.0,
-                        color: Colors.grey[400]
+                        color: Colors.grey[400]!
                       ),
                     ),
                     child: TextField(

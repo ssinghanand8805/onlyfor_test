@@ -202,12 +202,12 @@ class _ChatDetailPageState extends State<ChatDetailScreen> {
 }
 
 class ChatBubble extends StatelessWidget {
-  final bool isMe;
-  final String profileImg;
-  final String message;
-  final int messageType;
+  final bool?isMe;
+  final String?profileImg;
+  final String?message;
+  final int?messageType;
   const ChatBubble({
-    Key key,
+    Key?key,
     this.isMe,
     this.profileImg,
     this.message,
@@ -216,7 +216,7 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isMe) {
+    if (isMe == true) {
       return Padding(
         padding: const EdgeInsets.all(1.0),
         child: Row(
@@ -229,7 +229,7 @@ class ChatBubble extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(13.0),
                   child: Text(
-                    message,
+                    message!,
                     style: TextStyle(color: white, fontSize: 17),
                   ),
                 ),
@@ -250,7 +250,7 @@ class ChatBubble extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: NetworkImage(profileImg), fit: BoxFit.cover)),
+                      image: NetworkImage(profileImg!), fit: BoxFit.cover)),
             ),
             SizedBox(
               width: 15,
@@ -262,7 +262,7 @@ class ChatBubble extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(13.0),
                   child: Text(
-                    message,
+                    message!,
                     style: TextStyle(color: black, fontSize: 17),
                   ),
                 ),
@@ -275,7 +275,7 @@ class ChatBubble extends StatelessWidget {
   }
 
   getMessageType(messageType) {
-    if (isMe) {
+    if (isMe == true) {
       // start message
       if (messageType == 1) {
         return BorderRadius.only(

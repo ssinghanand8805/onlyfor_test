@@ -1,7 +1,7 @@
 class UserNotification {
-  final String imageUrl;
-  final String content;
-  final String time;
+  final String?imageUrl;
+  final String?content;
+  final String?time;
 
   UserNotification({
     this.imageUrl,

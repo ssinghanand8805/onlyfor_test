@@ -8,10 +8,10 @@ import '../utils/colors.dart';
 import 'commentCard.dart';
 
 class PostContainer extends StatelessWidget {
-  final Post post;
+  final Post?post;
 
   const PostContainer({
-    Key key,
+    Key?key,
     this.post,
   }) : super(key: key);
 
@@ -28,12 +28,12 @@ class PostContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _PostHeader(post: post),
+                _PostHeader(post: post!),
                 const SizedBox(
                   height: 4.0,
                 ),
-                Text(post.caption),
-                post.imageUrl != null
+                Text(post!.caption.toString()),
+                post?.imageUrl != null
                     ? const SizedBox.shrink()
                     : const SizedBox(
                         height: 6.0,
@@ -41,10 +41,10 @@ class PostContainer extends StatelessWidget {
               ],
             ),
           ),
-          post.imageUrl != null
+          post!.imageUrl != null
               ? Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: CachedNetworkImage(imageUrl: post.imageUrl),
+                  child: CachedNetworkImage(imageUrl: post!.imageUrl.toString()),
                 )
               : const SizedBox.shrink(),
           Padding(
@@ -58,10 +58,10 @@ class PostContainer extends StatelessWidget {
 }
 
 class _PostHeader extends StatelessWidget {
-  final Post post;
+  final Post?post;
 
   const _PostHeader({
-    Key key,
+    Key?key,
     this.post,
   }) : super(key: key);
 
@@ -69,7 +69,7 @@ class _PostHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ProfileAvatar(imageUrl: post.user.imageUrl),
+        ProfileAvatar(imageUrl: post!.user!.imageUrl.toString()),
         const SizedBox(
           width: 8.0,
         ),
@@ -78,7 +78,7 @@ class _PostHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                post.user.name,
+                post!.user!.name.toString(),
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
@@ -86,7 +86,7 @@ class _PostHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '${post.timeAgo} • ',
+                    '${post!.timeAgo} • ',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 12.0,
@@ -112,10 +112,10 @@ class _PostHeader extends StatelessWidget {
 }
 
 class _PostStats extends StatelessWidget {
-  final Post post;
+  final Post?post;
 
   const _PostStats({
-    Key key,
+    Key?key,
     this.post,
   }) : super(key: key);
 
@@ -142,14 +142,14 @@ class _PostStats extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                '${post.likes}',
+                '${post!.likes}',
                 style: TextStyle(
                   color: Colors.grey[600],
                 ),
               ),
             ),
             Text(
-              '${post.comments} Comments',
+              '${post!.comments} Comments',
               style: TextStyle(
                 color: Colors.grey[600],
               ),

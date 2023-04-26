@@ -11,23 +11,23 @@ class WatchTab extends StatefulWidget {
 
 class _WatchTabState extends State<WatchTab> {
   String videoUrl1 = 'https://www.youtube.com/watch?v=j5-yKhDd64s';
-  YoutubePlayerController _controller1;
+  YoutubePlayerController?_controller1;
 
   String videoUrl2 = 'https://www.youtube.com/watch?v=E1ZVSFfCk9g';
-  YoutubePlayerController _controller2;
+  YoutubePlayerController ?_controller2;
 
   @override
   void initState() {
     super.initState();
-    _controller1 = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(videoUrl1));
-    _controller2 = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(videoUrl2));
+    _controller1 = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(videoUrl1).toString());
+    _controller2 = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(videoUrl2).toString());
   }
 
   @override
   void dispose() {
     super.dispose();
-    _controller1.dispose();
-    _controller2.dispose();
+    _controller1!.dispose();
+    _controller2!.dispose();
   }
 
   @override
@@ -177,7 +177,7 @@ class _WatchTabState extends State<WatchTab> {
 
                   SizedBox(height: 20.0),
 
-                  YoutubePlayer(controller: _controller1),
+                  YoutubePlayer(controller: _controller1!),
 
                   SizedBox(height: 10.0),
 
@@ -270,7 +270,7 @@ class _WatchTabState extends State<WatchTab> {
 
                   SizedBox(height: 20.0),
 
-                  YoutubePlayer(controller: _controller2),
+                  YoutubePlayer(controller: _controller2!),
 
                   SizedBox(height: 10.0),
 

@@ -7,7 +7,7 @@ class NotificationWidget extends StatelessWidget {
   final UserNotification notification;
 
   NotificationWidget({
-    this.notification
+    required this.notification
   });
 
   @override
@@ -23,7 +23,7 @@ class NotificationWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               CircleAvatar(
-                backgroundImage: AssetImage(notification.imageUrl),
+                backgroundImage: AssetImage(notification.imageUrl.toString()),
                 radius: 35.0,
               ),
 
@@ -33,8 +33,8 @@ class NotificationWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(notification.content, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
-                  Text(notification.time, style: TextStyle(fontSize: 15.0, color: Colors.grey)),
+                  Text(notification.content.toString(), style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+                  Text(notification.time.toString(), style: TextStyle(fontSize: 15.0, color: Colors.grey)),
                 ],
               ),
             ],
