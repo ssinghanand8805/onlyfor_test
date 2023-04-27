@@ -1,5 +1,6 @@
 
 
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../ApiHelper/popular_product_repo.dart';
@@ -16,6 +17,12 @@ class LogInModel{
       print("--- BODY---- "+body.toString());
       Response data = await apidata.postApiCallByJson(
           "api/login", body);
-      print("DATA : "+ data.bodyString.toString());
+      print("DATA : "+ data.body.toString());
+      if(data.body['status'] == false){
+        Fluttertoast.showToast(msg: data.body['message']);
+      }
+      else{
+        Fluttertoast.showToast(msg: data.body['message']);
+      }
     }
   }

@@ -6,21 +6,32 @@ class CustomTextField extends StatelessWidget {
   double?maxWidth;
   ValueChanged?onValueChanged;
   TextEditingController? controller;
+  FormFieldValidator<String>? validator;
   CustomTextField({
     Key? key,
     required this.hintText,
+    this.validator,
+    this.maxWidth,
+    this.maxHeight,
+    this.onValueChanged,
     required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       onChanged: onValueChanged,
       controller: controller,
+      validator: validator,
       style: TextStyle(
         color: Colors.black,
         fontSize: 14,
       ),
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: Colors.red,
+        ),
         hintText: hintText,
         hintStyle: TextStyle(
           color: Colors.grey,
@@ -28,7 +39,7 @@ class CustomTextField extends StatelessWidget {
         ),
         contentPadding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
         constraints: BoxConstraints(
-          maxHeight: maxHeight??40,
+          maxHeight: maxHeight??80,
           maxWidth: maxWidth??300,
         ),
         border: OutlineInputBorder(
